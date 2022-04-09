@@ -230,6 +230,9 @@ Method OnAfterSave(InternalName As %String, Object As %RegisteredObject = {$$$NU
 /// Called after the compile of the item is done.
 Method OnAfterCompile(InternalName As %String) As %Status
 {
+    if '$$$comClassDefined($classname()) {
+        quit $$$OK
+    }
     quit ..OnAfterSave(InternalName)
 }
 
@@ -318,3 +321,4 @@ Method GetStatus(InternalName As %String, ByRef IsInSourceControl As %Boolean, B
 }
 
 }
+
